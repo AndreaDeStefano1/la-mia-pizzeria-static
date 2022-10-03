@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+    ViewData["Title"] = "Home Page";
+    string[] pizze = { "Margherita", "Diavola", "Marinara" };
+    string[] descrizioni = { "Fior di latte, pomodoro, basilico", "Salame picante, fior di latte, pomodoro ", "Origano, pomodoro" };
+    int[] prezzi = { 5, 6, 4 };
+}
+
+<div class="text-center">
+<table>
+    <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ingredienti</th>
+                <th>Prezzo</th>
+            </tr>
+    </thead>
+    <tbody>
+            @for (var i = 0; i < pizze.Length; i++)
+            {
+                <tr>
+                    <td>@pizze[i]</td>
+                    <td>@descrizioni[i]</td>
+                    <td>@prezzi[i] €</td>
+                </tr>
+            }
+    </tbody> 
+        
+</table>
+    
+</div>
