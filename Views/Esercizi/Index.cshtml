@@ -1,0 +1,82 @@
+﻿
+@{
+    // link        /Esercizi/Index
+
+    Layout = null;
+    string name = "Andrea";
+    string surname = "De Stefano";
+    //    2.Creare una funzione che stampa la somma dei numeri che vanno da 1 a n(con n passato come parametro -n incluso)
+    //    Stampare dentro uno span il risultato.
+
+    int StampaSomma(int n){
+        int somma = 0;
+        for (int i = 0; i <= n; i++)
+        {
+            somma += i;
+        }
+
+        return somma;
+    }
+
+    // 3.Contare quante volte la lettera a è presente nalla frase "nel mezzo del cammin di nostra vita" e stampare questo valore in pagina
+    string frase = "nel mezzo del cammin di nostra vita";
+    int ContaA(string text){
+        int n = 0;
+
+        char[] arr = text.ToCharArray();
+        foreach (char ch in arr)
+        {
+            if(ch == 'a'){
+                n++;
+            }
+        }
+
+        return n;
+    }
+
+
+    // 4.Creare una List<int> di 20 numeri interi(generati random da 1 a 90, 1 e 90 inclusi) e mostrare in pagina solo i numeri compresi tra 20 e 70
+
+    List< int > random = new List<int>();
+    PopolaList();
+    void PopolaList(){
+        for (int i = 0; i < 20; i++)
+        {
+            int n = new Random().Next(1, 90);
+            random.Add(n);
+        }
+    }
+
+
+    // 5. Stampare in pagina la data e l'ora attuale (usando la classe DateTime) con il formato anno-mese-giorno ore:minuti:secondi
+
+    // 6. Partendo dalla data di oggi (usando la classe DateTime) stampare in pagina
+    // a. la data di 7 giorni fa
+    // b . che giorno della settimana è oggi (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+    // c. che giorno della settimana sarà nello stesso giorno e mese di oggi ma tra un anno (il risultato dovrà essere il nome del giorno (Lunedì, Martedì, ...)
+
+  
+
+}
+
+<div class="">
+    <h2> @name @surname</h2>
+    <p>2 - La somma dei numeri fino a 10 è @StampaSomma(10)</p>
+    <p>3 - Nella frase "@frase" la lettera a è presente @ContaA(frase) volte</p>
+    <p>4 - Nella lista di numeri rwandom i numeri compresi trra 20 e 70 sono:</p>
+    @foreach (int n in random)
+    {
+        <ul>
+            @if (n >= 20 && n <= 70){
+                <li>@n</li>
+            }
+        </ul>
+        
+    }
+
+   
+    <p>5 - Oggi è @DateTime.Now.ToString()</p>
+    <p>6a - 7 giorni fa era @DateTime.Now.AddDays(-7);</p>
+    <p>6b - Oggi è  @DateTime.Now.ToString("dddd")</p>
+    <p>6c - Oggi tra un anno sarà @DateTime.Now.AddYears(1).ToString("dddd")</p>
+</div>
